@@ -101,7 +101,7 @@ mod cuda {
     }
 }
 
-#[cfg(any(all(target_os = "macos", target_arch = "aarch64"), target_os = "ios"))]
+#[cfg(any(all(feature = "metal", target_os = "macos", target_arch = "aarch64"), target_os = "ios"))]
 mod metal {
     pub use crate::metal::MetalCircuitHal;
     pub use risc0_zkp::hal::metal::{
@@ -172,7 +172,7 @@ cfg_if::cfg_if! {
         pub fn poseidon254_hal_pair() -> HalPair<CpuHal<BabyBear>, CpuCircuitHal<'static, CircuitImpl>> {
             cpu::poseidon254_hal_pair()
         }
-    } else if #[cfg(any(all(target_os = "macos", target_arch = "aarch64"), target_os = "ios"))] {
+    } else if #[cfg(any(all(feature = "metal", target_os = "macos", target_arch = "aarch64"), target_os = "ios"))] {
         /// TODO
         #[allow(dead_code)]
         pub fn sha256_hal_pair() -> HalPair<metal::MetalHalSha256, metal::MetalCircuitHal<metal::MetalHashSha256>> {

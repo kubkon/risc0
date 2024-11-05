@@ -139,7 +139,12 @@ getrandom = ["risc0-zkvm-platform/getrandom"]
 # The zkVM uses a bump-pointer heap allocator by default which does not free
 # memory. This will use a slower linked-list heap allocator to reclaim memory.
 heap-embedded-alloc = ["risc0-zkvm-platform/heap-embedded-alloc"]
-metal = ["prove"]
+metal = [
+  "prove",
+  "risc0-circuit-recursion/metal",
+  "risc0-circuit-rv32im/metal",
+  "risc0-zkp/metal",
+]
 prove = [
   "client",
   "dep:addr2line",

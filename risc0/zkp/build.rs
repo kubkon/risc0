@@ -16,6 +16,7 @@ use std::env;
 
 fn main() {
     if env::var("CARGO_FEATURE_PROVE").is_ok()
+        && env::var("CARGO_FEATURE_METAL").is_ok()
         && env::var("CARGO_CFG_TARGET_OS").is_ok_and(|os| os == "macos" || os == "ios")
     {
         let metal_bin =

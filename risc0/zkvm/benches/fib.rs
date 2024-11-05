@@ -41,7 +41,7 @@ fn execute(group: &mut BenchGroup) {
 fn warmup(_group: &mut BenchGroup) {
     #[cfg(any(
         feature = "cuda",
-        any(all(target_os = "macos", target_arch = "aarch64"), target_os = "ios")
+        any(all(feature = "metal", target_os = "macos", target_arch = "aarch64"), target_os = "ios")
     ))]
     {
         println!("warmup");

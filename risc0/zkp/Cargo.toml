@@ -33,7 +33,7 @@ tracing = { version = "0.1", default-features = false, features = [
 ] }
 
 [target.'cfg(any(target_os="macos", target_os="ios"))'.dependencies]
-metal = { workspace = true }
+metal = { version = "0.29", optional = true }
 
 [target.'cfg(not(target_os = "zkvm"))'.dependencies]
 ndarray = { version = "0.16", features = ["rayon"], optional = true }
@@ -57,7 +57,7 @@ features = ["prove", "std"]
 circuit_debug = []
 cuda = ["dep:cust", "prove", "risc0-sys/cuda"]
 default = []
-metal = ["prove"]
+metal = ["dep:metal", "prove", "risc0-sys/metal"]
 metal_prefix_products = []
 prove = [
   "dep:ff",

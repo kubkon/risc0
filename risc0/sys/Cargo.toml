@@ -15,8 +15,9 @@ risc0-build-kernel = { workspace = true }
 [dependencies]
 cust = { version = "0.3", optional = true }
 sppark = { workspace = true, optional = true }
+metal = { version = "0.29", optional = true }
 
 [features]
 default = []
 cuda = ["dep:cust", "dep:sppark"]
-metal = []
+metal = ["dep:metal"]
